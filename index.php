@@ -11,4 +11,4 @@ $utils = new Utils();
 $app->showSchedule();
 $utils->showBr(2);
 
-$app->showNextTasks(2);
+$app->showNextTasks(100);

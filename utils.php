@@ -1,8 +1,8 @@
 <?php
 
 function date_compare($a, $b) {
-    $t1 = strtotime($a['time']);
-    $t2 = strtotime($b['time']);
+    $t1 = strtotime($a["time"]);
+    $t2 = strtotime($b["time"]);
     return $t1 - $t2;
 }
 
@@ -16,7 +16,7 @@ class Utils {
 
     function sortArrayByDate($arr) {
         $result = $arr;
-        usort($result, 'date_compare');
+        usort($result, "date_compare");
         return $result;
     }
 
