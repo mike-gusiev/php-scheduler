@@ -24,5 +24,6 @@
             "time": "0 0 * * 0",
             "task": "update software (once a week)"
         }
-    ]
+    ],
+    "lastRun": "2017-10-05 12:00:00"
 }

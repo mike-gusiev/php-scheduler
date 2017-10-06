@@ -12,8 +12,8 @@ class App {
     function showSchedule() {
         echo "Current time: <b>" . date("Y-m-d H:i:s") . "</b> (" . date_default_timezone_get() .")";
         $this->utils->showBr(2);
-        for ($i = 0; $i < count($this->cron); $i++) {
-            echo "<b>" . $this->cron[$i]["time"] . "</b> " . $this->cron[$i]["task"];
+        foreach ($this->cron as $job) {
+            echo "<b>" . $job["time"] . "</b> " . $job["task"];
             $this->utils->showBr();
         }
     }
