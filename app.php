@@ -7,7 +7,7 @@ class App {
 //        echo "<pre>" . print_r($json, true) . "</pre>";
     }
 
-    function showBr($lines, $is_return) {
+    function showBr($lines, $is_return = false) {
         $result = str_repeat("<br/>\n", $lines ? $lines : 1);
         if ($is_return) return $result;
         echo $result;
@@ -23,12 +23,26 @@ class App {
 
     function showNextTasks($count) {
         echo "showNextTasks: " . $count . "<br/>\n";
-        echo "Number of schedules: " . count($this->cron) . "<br/>\n";
+        echo "Number of schedules: " . count($this->cron) . $this->showBr(1, true);
 
-        $cron = Cron\CronExpression::factory($this->cron[0]['time']);
+        $schedule = [];
+        foreach ($this->cron as $jobs) {
+            $schedule = array_merge($schedule, $this->getAllDates($jobs['time'], $jobs['task'], $count));
+        }
 
-        echo $cron->getNextRunDate()->format('Y-m-d H:i:s') . $this->showBr(1,true);
-        echo $cron->getNextRunDate(null, 1)->format('Y-m-d H:i:s') . $this->showBr(1,true);
+        echo '<pre>' . print_r($schedule, true) . '</pre>';
+    }
+
+    function getAllDates($time, $task, $count) {
+        $result = [];
+        $cron = Cron\CronExpression::factory($time);
+        foreach ($cron->getMultipleRunDates($count) as $date) {
+            $result[] = [
+                "time" => $date->format('Y-m-d H:i:s'),
+                "task" => $task
+            ];
+        }
+        return $result;
     }
 
 };

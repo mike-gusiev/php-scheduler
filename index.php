@@ -9,4 +9,4 @@ $app = new App($json);
 $app->showSchedule();
 $app->showBr(2);
 
-$app->showNextTasks(100);
+$app->showNextTasks(2);
