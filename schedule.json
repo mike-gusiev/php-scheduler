@@ -1,0 +1,28 @@
+{
+    "jobs": [
+        {
+            "time": "0 * * * *",
+            "task": "send message (once an hour)"
+        },
+        {
+            "time": "0 19 * * 6",
+            "task": "update contact data (every Saturday at 7:00PM)"
+        },
+        {
+            "time": "0 0 * * *",
+            "task": "clean old logs (every day at midnight)"
+        },
+        {
+            "time": "0 0 1 * *",
+            "task": "reboot servers (once a month)"
+        },
+        {
+            "time": "0 0 1 1 *",
+            "task": "reset passwords (once a year)"
+        },
+        {
+            "time": "0 0 * * 0",
+            "task": "update software (once a week)"
+        }
+    ]
+}
